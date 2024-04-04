@@ -1,21 +1,9 @@
-"use client";
-import Image from "next/image";
+import React from "react";
 
 const page = () => {
   return (
-    <div className="flex">
-      <div className="md:flex hidden cursor-pointer  text-[3vh] w-[40vw] h-screen font-bold ">
-        <Image
-          src={require("../assets/banner.jpg")}
-          className=" object-cover w-full h-full"
-          alt="logo"
-        />
-      </div>
+    <div className="w-full h-screen flex justify-center">
       <div className="md:w-[60vw] w-full justify-center flex-col flex h-full">
-        <div>
-        <span className=" gap-2 text-sm font-medium p-4 text-left flex float-end">Already a member ? <a className="text-blue-400">Sign in</a></span>
-        </div>
-       
         <div className="md:px-[12vw]  m-[5vh] h-full">
           <h1 className=" font-black text-[3.5vh]">Sign up to Dribble</h1>
           <h2 className="text-red-400 font-medium text-[2vh] pt-[2vh] pb-[3vh]">
@@ -70,13 +58,15 @@ const page = () => {
                 <a className="text-blue-400">Notification Settings.</a>
               </label>
             </div>
-            <button className="bg-[#EA4B8B] w-fit py-2 px-[2vw] text-white rounded-lg">Create Account</button>
-            <p className="text-[1.5vh] md:max-w-[20vw] text-gray-700 font-medium">This site is protected by reCAPTCHA and the Google{" "}
-                <a className="text-blue-400 text-[1.7vh]">
-                  Privacy Policy 
-                </a>{" "}
-                 and{" "}
-                <a className="text-blue-400 text-[1.7vh]">Terms of Service</a> apply</p>
+            <button className="bg-[#EA4B8B] w-fit py-2 px-[2vw] text-white rounded-lg">
+              Create Account
+            </button>
+            <p className="text-[1.5vh] md:max-w-[20vw] text-gray-700 font-medium">
+              This site is protected by reCAPTCHA and the Google{" "}
+              <a className="text-blue-400 text-[1.7vh]">Privacy Policy</a> and{" "}
+              <a className="text-blue-400 text-[1.7vh]">Terms of Service</a>{" "}
+              apply
+            </p>
           </div>
         </div>
       </div>
