@@ -43,7 +43,12 @@ export async function POST(req : NextRequest) {
         const token = jwt.sign({id : user.id} , process.env.JWT_SECRET || "secret");
         return NextResponse.json({sucess : true , token : token});
     } catch (error) {
+        console.log(error);
         return NextResponse.json({sucess : false , message : error});
-    }
+    }    
+}
+
+export async function PUT(req : NextRequest){
     
 }
+
