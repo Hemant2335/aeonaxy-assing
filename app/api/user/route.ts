@@ -1,7 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import jwt from "jsonwebtoken";
 const prisma = new PrismaClient();
+require("dotenv").config();
 
 const UserSchema = z.object({
     name : z.string(),
@@ -27,7 +29,7 @@ export async function POST(req : NextRequest) {
     }
     try {
         const user = await prisma.user.create({
-            data : {
+            data : { 
                 name : body.name,
                 email : body.email,
                 password : body.password,
@@ -37,7 +39,9 @@ export async function POST(req : NextRequest) {
                 bio : body.bio
             }
         });
-        return NextResponse.json({sucess : true , user});
+        console.log(process.env.JWT_SECRET);
+        const token = jwt.sign({id : user.id} , process.env.JWT_SECRET || "secret");
+        return NextResponse.json({sucess : true , token : token});
     } catch (error) {
         return NextResponse.json({sucess : false , message : error});
     }
