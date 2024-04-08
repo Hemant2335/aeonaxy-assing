@@ -1,5 +1,6 @@
 'use server'
 import axios from "axios";
+import { cookies } from "next/headers";
 import { redirect } from 'next/navigation'
 
 type CreateUserProps = {
@@ -15,6 +16,7 @@ export async function updateuser(Props : CreateUserProps){
         const res = await axios.put("http://localhost:3000/api/profile", {
           profilepic: Props.profilepic,
           location: Props.location,
+          token: cookies().get("token"),
         });
         const data = res.data;
         console.log(data);
@@ -24,7 +26,6 @@ export async function updateuser(Props : CreateUserProps){
                 return ;
             }
     } catch (error) {
-          console.log(error);
           return "An error occurred";
     } 
     redirect("/Role");
