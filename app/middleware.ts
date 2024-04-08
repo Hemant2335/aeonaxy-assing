@@ -1,11 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
+import  { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 
 export async function middleware(req: NextRequest){
     const res = NextResponse.next();
     const token = req.cookies.get("token");
     if (!token) {
-        return NextResponse.redirect("/Signup");
+        return NextResponse.redirect(new URL('/Signup', req.url));
     }
     // If token is present, continue with the next middleware or route handler
     const decode  = jwt.verify(token.value, process.env.JWT_SECRET || "secret") as string;

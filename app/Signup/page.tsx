@@ -1,7 +1,27 @@
 "use client";
+
+import axios from "axios";
 import Image from "next/image";
+import { useState } from "react";
+import { createuser } from "../ServerActions/createuser";
 
 const page = () => {
+  const [Name, setName] = useState<string | null>(null);
+  const [Username, setUsername] = useState<string | null>(null);
+  const [Email, setEmail] = useState<string | null>(null);
+  const [Password, setPassword] = useState<string | null>(null);
+  const [Terms, setTerms] = useState<boolean>(false);
+  const [Warning, setWarning] = useState<string | null>(null);
+  const handlebtnclick = () => {
+    if (!Terms) {
+      alert("Please Accept the Terms and Conditions");
+    }
+    if (!Name || !Username || !Email || !Password) {
+      alert("Please Fill all the fields");
+    }
+    createuser({ Name, Username, Email, Password });
+  };
+
   return (
     <div className="flex">
       <div className="md:flex hidden cursor-pointer  text-[3vh] w-[40vw] h-screen font-bold ">
@@ -13,9 +33,11 @@ const page = () => {
       </div>
       <div className="md:w-[60vw] w-full justify-center flex-col flex h-full">
         <div>
-        <span className=" gap-2 text-sm font-medium p-4 text-left flex float-end">Already a member ? <a className="text-blue-400">Sign in</a></span>
+          <span className=" gap-2 text-sm font-medium p-4 text-left flex float-end">
+            Already a member ? <a className="text-blue-400">Sign in</a>
+          </span>
         </div>
-       
+
         <div className="md:px-[12vw]  m-[5vh] h-full">
           <h1 className=" font-black text-[3.5vh]">Sign up to Dribble</h1>
           <h2 className="text-red-400 font-medium text-[2vh] pt-[2vh] pb-[3vh]">
@@ -29,6 +51,9 @@ const page = () => {
                   type="text"
                   placeholder="eg. John Doe"
                   className="bg-[#F3F3F3] w-full font-medium text-sm  focus:outline-none p-[1.6vh] rounded-md"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
                 />
               </div>
               <div>
@@ -37,6 +62,9 @@ const page = () => {
                   type="text"
                   placeholder="eg. johndoe"
                   className="bg-[#F3F3F3] w-full font-medium text-sm focus:outline-none p-[1.6vh] rounded-md"
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
                 />
               </div>
             </div>
@@ -46,6 +74,9 @@ const page = () => {
                 type="text"
                 placeholder="eg. test@gmail.com"
                 className="bg-[#F3F3F3] w-full text-sm font-medium focus:outline-none p-[1.6vh] rounded-md"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </div>
             <div>
@@ -54,10 +85,20 @@ const page = () => {
                 type="text"
                 placeholder="6+ characters"
                 className="bg-[#F3F3F3] w-full text-sm font-medium focus:outline-none p-[1.6vh] rounded-md"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
             </div>
             <div className="flex gap-[1vw]">
-              <input type="checkbox" height={30} name="Terms" id="terms" />
+              <input
+                type="checkbox"
+                height={30}
+                name="Terms"
+                id="terms"
+                checked={Terms}
+                onChange={(e) => setTerms(e.target.checked)}
+              />
               <label
                 htmlFor="terms"
                 className="text-gray-700 text-[2vh] font-medium "
@@ -70,13 +111,18 @@ const page = () => {
                 <a className="text-blue-400">Notification Settings.</a>
               </label>
             </div>
-            <button className="bg-[#EA4B8B] w-fit py-2 px-[2vw] text-white rounded-lg">Create Account</button>
-            <p className="text-[1.5vh] md:max-w-[20vw] text-gray-700 font-medium">This site is protected by reCAPTCHA and the Google{" "}
-                <a className="text-blue-400 text-[1.7vh]">
-                  Privacy Policy 
-                </a>{" "}
-                 and{" "}
-                <a className="text-blue-400 text-[1.7vh]">Terms of Service</a> apply</p>
+            <button
+              onClick={handlebtnclick}
+              className="bg-[#EA4B8B] w-fit py-2 px-[2vw] text-white rounded-lg"
+            >
+              Create Account
+            </button>
+            <p className="text-[1.5vh] md:max-w-[20vw] text-gray-700 font-medium">
+              This site is protected by reCAPTCHA and the Google{" "}
+              <a className="text-blue-400 text-[1.7vh]">Privacy Policy</a> and{" "}
+              <a className="text-blue-400 text-[1.7vh]">Terms of Service</a>{" "}
+              apply
+            </p>
           </div>
         </div>
       </div>
