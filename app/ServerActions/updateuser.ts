@@ -8,8 +8,9 @@ type CreateUserProps = {
 }
 
 
-export async function createuser(Props : CreateUserProps){
+export async function updateuser(Props : CreateUserProps){
     console.log("Running");
+    console.log(Props);
     try {
         const res = await axios.put("http://localhost:3000/api/profile", {
           profilepic: Props.profilepic,
@@ -22,7 +23,6 @@ export async function createuser(Props : CreateUserProps){
                 console.log("Inavalid Arguments")
                 return ;
             }
-        return ;
     } catch (error) {
           console.log(error);
           return "An error occurred";

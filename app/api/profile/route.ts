@@ -8,26 +8,34 @@ export async function PUT(req: NextRequest) {
   const body = await req.json();
   console.log(token);
   if (!token) {
-    return NextResponse.redirect(new URL("/Signup", req.url));
+    NextResponse.json({ message: "No Token Provided" });
+    return;
   }
   const decode = jwt.verify(
     token.value,
     process.env.JWT_SECRET || "secret"
   ) as string;
   if (!decode) {
-    return NextResponse.redirect(new URL("/Signup", req.url));
+    NextResponse.json({ message: "Invalid Token" });
+    return ;
   }
   //Finding the User in database
   const id = (decode as any).id
-  const user = await prisma.user.update({
-    where: {
-      id: parseInt(id),
-    },
-    data: {
-      profilepic: body.profilepic,
-      location: body.location,
-    },
-  });
-  console.log(user);
-  return NextResponse.json({ user: decode });
+  try {
+    const user = await prisma.user.update({
+        where: {
+          id: parseInt(id),
+        },
+        data: {
+          profilepic: body.profilepic,
+          location: body.location,
+        },
+      });
+      console.log(user);
+      return NextResponse.json({ user: user });
+  } catch (error) {
+     console.log(error);
+     return NextResponse.json({ message: "An error occurred" });
+  }
+ 
 }
