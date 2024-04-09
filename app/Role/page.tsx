@@ -5,7 +5,7 @@ import CreateNavbar from "../components/CreateNavbar";
 import Image from "next/image";
 import { updateuser } from "../ServerActions/updateuser";
 
-const page = () => {
+const Role = () => {
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +50,7 @@ const page = () => {
             What brings you to Dribble?
           </h1>
           <h2 className="text-gray-600 font-medium text-[2vh] pt-[2vh] pb-[3vh]">
-            Select the options that best describe you. Don't worry, you can
+            Select the options that best describe you. Don&apos;t worry, you can
             explore other options later.
           </h2>
           <div className="md:flex-row flex flex-col gap-[4vh] justify-between mt-[4vh]">
@@ -64,7 +64,7 @@ const page = () => {
                 />
               </div>
               <h1 className="md:max-w-[15vw] font-bold ">
-                I'm a Designer looking to Share my work
+                I&apos;m a Designer looking to Share my work
               </h1>
               {selectedValue === "option1" && (
                 <p className="md:max-w-[12vw] md:mb-[5vh] text-[1.7vh] text-gray-400 text-center">
@@ -94,7 +94,7 @@ const page = () => {
                 />
               </div>
               <h1 className="md:max-w-[15vw] font-bold">
-                I'm a looking to hire a designer
+                I&apos;m a looking to hire a designer
               </h1>
               {selectedValue === "option2" && (
                 <p className="md:max-w-[12vw] md:mb-[5vh] text-[1.7vh] text-gray-400 text-center">
@@ -124,7 +124,7 @@ const page = () => {
                 />
               </div>
               <h1 className="md:max-w-[15vw] font-bold ">
-                I'm looking for design inspiration
+                I&apos;m looking for design inspiration
               </h1>
               {selectedValue === "option3" && (
                 <p className="md:max-w-[12vw] md:mb-[5vh] text-[1.7vh] text-gray-400 text-center">
@@ -158,4 +158,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Role;

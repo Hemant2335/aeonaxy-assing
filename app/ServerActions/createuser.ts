@@ -15,7 +15,7 @@ export async function createuser(Props : CreateUserProps){
     const cookieStore = cookies();
     console.log("Running");
     try {
-        const res = await axios.post("http://localhost:3000/api/user", {
+        const res = await axios.post("https://aeonaxy-assing.vercel.app/api/user", {
           name: Props.Name,
           email: Props.Email,
           password: Props.Password,

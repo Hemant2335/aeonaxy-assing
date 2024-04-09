@@ -23,7 +23,7 @@ const Footer = () => {
           />
         </div>
         <p className="max-w-[18vw] text-left text-[2vh] ">
-          Dribble is the world's leading community for creatives to share, grow,
+          Dribble is the world&apos;s leading community for creatives to share, grow,
           and get hired
         </p>
         <div className="flex mt-[3vh] text-gray-700 gap-2 text-[3vh]">

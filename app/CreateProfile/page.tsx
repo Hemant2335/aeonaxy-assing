@@ -6,7 +6,7 @@ import Image from "next/image";
 import { updateuser } from "../ServerActions/updateuser";
 import { CldUploadButton } from "next-cloudinary";
 
-const page = () => {
+const CreateProfile = () => {
   const [isselected, setisselected] = useState<any>(null);
   const [isuploaded, setisuploaded] = useState<boolean>(false);
   const [isLoading, setisLoading] = useState<boolean>(false);
@@ -36,7 +36,7 @@ const page = () => {
       <div className="md:w-[55vw] w-full justify-center flex-col flex h-full">
         <div className="md:pr-[12vw]  mx-[5vh] h-full">
           <h1 className=" font-black text-[4vh]">
-            Welcome! Let's create your profile
+            Welcome! Let&apos;s create your profile
           </h1>
           <h2 className="text-gray-600 font-medium text-[2vh] pt-[2vh] pb-[3vh]">
             Let others got to know you better! You can do these later
@@ -65,7 +65,7 @@ const page = () => {
               <div className="flex flex-col  gap-[2vh]">
                 <CldUploadButton
                   options={{ multiple: true }}
-                  uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME}
+                  uploadPreset={process.env.CLOUDINARY_PRESET_NAME}
                   onSuccess={(res) => {setimgurl((res?.info as any).url); setisuploaded(true);}}
                 >
                   <span className="border-[0.1vh] float-start  w-fit text-[1.8vh] font-bold border-gray-400 text-black rounded-md p-[1.5vh] mt-[2vh]">
@@ -106,4 +106,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default CreateProfile;

@@ -19,7 +19,7 @@ export default function Home() {
         </div>
         <div className="text-center max-w-[46vw] flex flex-col gap-[3vh] text-gray-600">
           <p>
-            Please verify your email address. We've sent a confirmation email
+            Please verify your email address. We&apos;ve sent a confirmation email
             to:
           </p>
           <span className="font-bold text-black">account@refero.design</span>
@@ -27,8 +27,8 @@ export default function Home() {
             Click the confirmation link in that email to begin using Dribbble.
           </p>
           <p className="">
-            Didn't receive the email? Check your Spam folder, it may have been
-            caught by a filter. If you still don't see it, you can{" "}
+            Didn&apos;t receive the email? Check your Spam folder, it may have been
+            caught by a filter. If you still don&apos;t see it, you can{" "}
             <a className="text-[#EA4B8B] font-medium">
               resend the confirmation email.
             </a>

@@ -8,8 +8,7 @@ export async function PUT(req: NextRequest) {
   const token = body.token;
   console.log("I am token" , token);
   if (!token) {
-    NextResponse.json({ message: "No Token Provided" });
-    return "No Token Provided";
+    return NextResponse.json({ message: "No Token Provided" });
   }
   console.log();
   const decode = jwt.verify(
@@ -17,8 +16,7 @@ export async function PUT(req: NextRequest) {
     process.env.NEXT_PUBLIC_JWT_SECRET || "secret"
   ) as string;
   if (!decode) {
-    NextResponse.json({ message: "Invalid Token" });
-    return "Invalid Token";
+    return NextResponse.json({ message: "Invalid Token" });
   }
   //Finding the User in database
   const id = (decode as any).id

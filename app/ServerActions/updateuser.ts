@@ -27,7 +27,7 @@ export async function updateuser(Props: CreateUserProps) {
     };
   }
   try {
-    const res = await axios.put("http://localhost:3000/api/profile", object);
+    const res = await axios.put("https://aeonaxy-assing.vercel.app/api/profile", object);
     const data = res.data;
     console.log(data);
     if (!data.sucess) {

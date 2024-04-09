@@ -34,8 +34,7 @@ export async function GET(req: NextRequest) {
   const token = req.nextUrl.searchParams.get('token');
   console.log("I am token" , token);
   if (!token) {
-    NextResponse.json({ message: "No Token Provided" });
-    return "No Token Provided";
+    return NextResponse.json({ message: "No Token Provided" });
   }
   console.log();
   
@@ -45,8 +44,7 @@ export async function GET(req: NextRequest) {
         process.env.JWT_SECRET || "secret"
       ) as string;
       if (!decode) {
-        NextResponse.json({ message: "Invalid Token" });
-        return "Invalid Token";
+        return NextResponse.json({ message: "Invalid Token" });
       }
       //Finding the User in database
       const id = (decode as any).id

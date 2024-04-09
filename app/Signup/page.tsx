@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { createuser } from "../ServerActions/createuser";
 
-const page = () => {
+const Signup = () => {
   const [Name, setName] = useState<string | null>(null);
   const [Username, setUsername] = useState<string | null>(null);
   const [Email, setEmail] = useState<string | null>(null);
@@ -103,7 +103,7 @@ const page = () => {
                 htmlFor="terms"
                 className="text-gray-700 text-[2vh] font-medium "
               >
-                Creating an account means you're okay with our{" "}
+                Creating an account means you&apos;re okay with our{" "}
                 <a className="text-blue-400">
                   Terms of Service, Privacy Policy,
                 </a>{" "}
@@ -130,4 +130,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Signup;
