@@ -15,8 +15,9 @@ export async function sendemail(Props: SendEmailProps) {
         email: Props.email,
         token : cookies().get("token")?.value
     });
+    return res.data;
   } catch (error) {
     return "An error occurred";
   }
-  redirect("/");
+//   redirect("/");
 }

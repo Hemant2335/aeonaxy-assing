@@ -31,6 +31,7 @@ const Role = () => {
         email : data?.user?.email
       })
       console.log(issent);
+      router.push("/");
   }
 
   useEffect(() => {
