@@ -27,10 +27,10 @@ const Role = () => {
         redirect: null,
       });
       console.log(data);
-      const issent = sendemail({
+      const issent = await sendemail({
         email : data?.user?.email
       })
-      router.push("/");
+      console.log(issent);
   }
 
   useEffect(() => {
