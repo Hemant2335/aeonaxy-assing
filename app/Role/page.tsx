@@ -4,10 +4,12 @@ import React, { useEffect, useState } from "react";
 import CreateNavbar from "../components/CreateNavbar";
 import Image from "next/image";
 import { updateuser } from "../ServerActions/updateuser";
+import { sendemail } from "../ServerActions/sendemail";
+import { useRouter } from "next/navigation";
 
 const Role = () => {
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
-
+  const router = useRouter();
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
   };
@@ -18,12 +20,17 @@ const Role = () => {
     if(selectedValue === "option1"){ bio = "I'm a Designer looking to Share my work";}
       else if(selectedValue === "option2"){ bio = "I'm a looking to hire a designer";}
       else if(selectedValue === "option3"){ bio = "I'm looking for design inspiration";}
-      updateuser({
+      const data = await updateuser({
         profilepic: null,
         location: null,
         bio: bio,
         redirect: null,
       });
+      console.log(data);
+      const issent = sendemail({
+        email : data?.user?.email
+      })
+      router.push("/");
   }
 
   useEffect(() => {

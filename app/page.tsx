@@ -2,6 +2,7 @@
 import { FaEnvelope, FaCheck } from "react-icons/fa6";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { Span } from "next/dist/trace";
 
 export default function Home() {
   return (
@@ -29,9 +30,9 @@ export default function Home() {
           <p className="">
             Didn&apos;t receive the email? Check your Spam folder, it may have been
             caught by a filter. If you still don&apos;t see it, you can{" "}
-            <a className="text-[#EA4B8B] font-medium">
+            <span className="text-[#EA4B8B] font-medium">
               resend the confirmation email.
-            </a>
+            </span>
           </p>
 
           <p>

@@ -5,6 +5,7 @@ import { FaCamera } from "react-icons/fa6";
 import Image from "next/image";
 import { updateuser } from "../ServerActions/updateuser";
 import { CldUploadButton } from "next-cloudinary";
+import { useRouter } from "next/navigation";
 
 const CreateProfile = () => {
   const [isselected, setisselected] = useState<any>(null);
@@ -12,7 +13,7 @@ const CreateProfile = () => {
   const [isLoading, setisLoading] = useState<boolean>(false);
   const [location, setlocation] = useState<string | null>(null);
   const [imgurl, setimgurl] = useState<string | null>(null);
-
+  const router  = useRouter();
   const handleNext = async () => {
     if (!isuploaded) {
       alert("Please upload an image");
@@ -22,12 +23,14 @@ const CreateProfile = () => {
       alert("Please enter a location");
       return;
     }
-    updateuser({
+    console.log(imgurl);
+    const data = await updateuser({
       profilepic: imgurl,
       location: location,
       bio: null,
       redirect: "Role",
     });
+    router.push("/Role");
   };
 
   return (
@@ -65,7 +68,7 @@ const CreateProfile = () => {
               <div className="flex flex-col  gap-[2vh]">
                 <CldUploadButton
                   options={{ multiple: true }}
-                  uploadPreset={process.env.CLOUDINARY_PRESET_NAME}
+                  uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME}
                   onSuccess={(res) => {setimgurl((res?.info as any).url); setisuploaded(true);}}
                 >
                   <span className="border-[0.1vh] float-start  w-fit text-[1.8vh] font-bold border-gray-400 text-black rounded-md p-[1.5vh] mt-[2vh]">

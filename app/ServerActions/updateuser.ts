@@ -34,9 +34,8 @@ export async function updateuser(Props: CreateUserProps) {
       console.log("Inavalid Arguments");
       return;
     }
+    return data;
   } catch (error) {
     return "An error occurred";
   }
-  if (Props.redirect == null) redirect(`/`);
-  else redirect(`/${Props.redirect}`);
 }
