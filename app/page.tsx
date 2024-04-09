@@ -1,12 +1,13 @@
 "use client";
 import { FaEnvelope, FaCheck } from "react-icons/fa6";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center mt-[5vh] h-screen">
+      <div className="flex flex-col items-center mt-[5vh] h-[70vh]">
         <h1 className="text-[3.7vh] font-medium">
           Please verify your email...
         </h1>
@@ -28,12 +29,18 @@ export default function Home() {
           <p className="">
             Didn't receive the email? Check your Spam folder, it may have been
             caught by a filter. If you still don't see it, you can{" "}
-            <a className="text-[#EA4B8B] font-medium">resend the confirmation email.</a>
+            <a className="text-[#EA4B8B] font-medium">
+              resend the confirmation email.
+            </a>
           </p>
 
-          <p>Wrong email address?<a className="text-[#EA4B8B] font-medium"> Change it.</a>.</p>
+          <p>
+            Wrong email address?
+            <a className="text-[#EA4B8B] font-medium"> Change it.</a>.
+          </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
