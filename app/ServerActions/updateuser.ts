@@ -1,32 +1,42 @@
-'use server'
+"use server";
 import axios from "axios";
 import { cookies } from "next/headers";
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation";
 
 type CreateUserProps = {
-    profilepic : string | null,
-    location : string | null,
-}
+  profilepic: string | null;
+  location: string | null;
+  bio: string | null;
+  redirect: string | null;
+};
 
-
-export async function updateuser(Props : CreateUserProps){
-    console.log("Running");
-    console.log(Props);
-    try {
-        const res = await axios.put("http://localhost:3000/api/profile", {
-          profilepic: Props.profilepic,
-          location: Props.location,
-          token: cookies().get("token"),
-        });
-        const data = res.data;
-        console.log(data);
-        if(!data.sucess)
-            {
-                console.log("Inavalid Arguments")
-                return ;
-            }
-    } catch (error) {
-          return "An error occurred";
-    } 
-    redirect("/Role");
+export async function updateuser(Props: CreateUserProps) {
+  console.log("Running");
+  console.log(Props);
+  let object = {};
+  if (Props.profilepic == null && Props.location == null) {
+    object = {
+      bio: Props.bio,
+      token: cookies().get("token"),
+    };
+  } else {
+    object = {
+      profilepic: Props.profilepic,
+      location: Props.location,
+      token: cookies().get("token"),
+    };
+  }
+  try {
+    const res = await axios.put("http://localhost:3000/api/profile", object);
+    const data = res.data;
+    console.log(data);
+    if (!data.sucess) {
+      console.log("Inavalid Arguments");
+      return;
+    }
+  } catch (error) {
+    return "An error occurred";
+  }
+  if (Props.redirect == null) redirect(`/`);
+  else redirect(`/${Props.redirect}`);
 }

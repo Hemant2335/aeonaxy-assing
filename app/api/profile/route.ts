@@ -11,9 +11,10 @@ export async function PUT(req: NextRequest) {
     NextResponse.json({ message: "No Token Provided" });
     return "No Token Provided";
   }
+  console.log();
   const decode = jwt.verify(
     token.value,
-    process.env.JWT_SECRET || "secret"
+    process.env.NEXT_PUBLIC_JWT_SECRET || "secret"
   ) as string;
   if (!decode) {
     NextResponse.json({ message: "Invalid Token" });
@@ -29,6 +30,7 @@ export async function PUT(req: NextRequest) {
         data: {
           profilepic: body.profilepic,
           location: body.location,
+          bio: body.bio,
         },
       });
       console.log(user);

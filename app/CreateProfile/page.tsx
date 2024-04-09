@@ -25,6 +25,8 @@ const page = () => {
     updateuser({
       profilepic: imgurl,
       location: location,
+      bio: null,
+      redirect: "Role",
     });
   };
 
