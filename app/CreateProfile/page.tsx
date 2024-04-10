@@ -30,6 +30,11 @@ const CreateProfile = () => {
       bio: null,
       redirect: "Role",
     });
+    if(!data.sucess)
+      {
+        alert(data.message);
+        return;
+      }
     router.push("/Role");
   };
 

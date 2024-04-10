@@ -8,15 +8,15 @@ export async function PUT(req: NextRequest) {
   const token = body.token;
   console.log("I am token" , token);
   if (!token) {
-    return NextResponse.json({ message: "No Token Provided" });
+    return NextResponse.json({ sucess: false ,  message: "No Token Provided" });
   }
-  console.log();
+  console.log(process.env.JWT_SECRET);
   const decode = jwt.verify(
     token.value,
     process.env.JWT_SECRET || "secret"
   ) as string;
   if (!decode) {
-    return NextResponse.json({ message: "Invalid Token" });
+    return NextResponse.json({sucess: false ,  message: "Invalid Token" });
   }
   //Finding the User in database
   const id = (decode as any).id
