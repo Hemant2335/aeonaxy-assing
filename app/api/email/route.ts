@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
   `;
  try {
     resend.emails.send({
-        from: '221b253@juetguna.in',
+        from: 'onboarding@resend.dev',
         to: body.email,
         subject: 'Confirmation Email',
         html: htmlContent
