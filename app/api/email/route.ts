@@ -9,7 +9,7 @@ const resend = new Resend(process.env.EMAIL_API_KEY || "");
 export async function POST(req: NextRequest) {
   console.log(process.env.EMAIL_API_KEY)
   const body = await req.json();
-  const confirmationLink = `http://localhost:3000/api/email?token=${body.token}`; // Replace with your actual confirmation link
+  const confirmationLink = `https://aeonaxy-assing.vercel.app/api/email?token=${body.token}`; // Replace with your actual confirmation link
 
   const htmlContent = `
     <p>Please click the following link to confirm your email:</p>
