@@ -13,7 +13,7 @@ export async function PUT(req: NextRequest) {
   console.log();
   const decode = jwt.verify(
     token.value,
-    process.env.NEXT_PUBLIC_JWT_SECRET || "secret"
+    process.env.JWT_SECRET || "secret"
   ) as string;
   if (!decode) {
     return NextResponse.json({ message: "Invalid Token" });
