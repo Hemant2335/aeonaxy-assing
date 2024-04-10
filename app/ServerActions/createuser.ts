@@ -29,14 +29,14 @@ export async function createuser(Props : CreateUserProps){
         if(!data.sucess)
             {
                 console.log("Inavalid Arguments")
-                return ;
+                return data;
             }
         const token = res.data.token;
         console.log(token);
         cookieStore.set("token", token);
+        return data;
     } catch (error) {
           console.log(error);
           return "An error occurred";
     } 
-    redirect("/CreateProfile");
 }

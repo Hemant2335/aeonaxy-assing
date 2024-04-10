@@ -1,9 +1,8 @@
 "use client";
-
-import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { createuser } from "../ServerActions/createuser";
+import { useRouter } from "next/navigation";
 
 const Signup = () => {
   const [Name, setName] = useState<string | null>(null);
@@ -12,14 +11,40 @@ const Signup = () => {
   const [Password, setPassword] = useState<string | null>(null);
   const [Terms, setTerms] = useState<boolean>(false);
   const [Warning, setWarning] = useState<string | null>(null);
-  const handlebtnclick = () => {
+  const router = useRouter();
+  const handlebtnclick = async() => {
+
+    // Could have used a Better approach for Error handling
+
     if (!Terms) {
-      alert("Please Accept the Terms and Conditions");
+      setWarning("Please Accept the Terms and Conditions");
+      return ;
     }
     if (!Name || !Username || !Email || !Password) {
-      alert("Please Fill all the fields");
+      setWarning("Please Fill all the fields");
+      return ;
     }
-    createuser({ Name, Username, Email, Password });
+    if(Email && !Email?.includes("@") && !Email?.includes(".")){
+      setWarning("Please Enter a valid Email");
+      return ;
+    }
+    if (Password && Password?.length <= 6) {
+      setWarning("Password should be greater than 6 characters");
+      return ;
+    }
+    const data = await createuser({ Name, Username, Email, Password });
+    if(!data.sucess)
+      {
+        const factor = data?.message?.meta?.target[0];
+        if(factor === "email")
+        setWarning("User with this Email already exists");
+        else if(factor == "username")
+        setWarning("Username has already been taken");
+      }
+    else
+    {
+      router.push("/CreateProfile")
+    }
   };
 
   return (
@@ -40,9 +65,11 @@ const Signup = () => {
 
         <div className="md:px-[12vw]  m-[5vh] h-full">
           <h1 className=" font-black text-[3.5vh]">Sign up to Dribble</h1>
-          <h2 className="text-red-400 font-medium text-[2vh] pt-[2vh] pb-[3vh]">
-            • Username has already been taken
-          </h2>
+          {Warning && (
+            <h2 className="text-red-400 font-medium text-[2vh] pt-[2vh] pb-[3vh]">
+              • {Warning}
+            </h2>
+          )}
           <div className="flex flex-col gap-[4vh]">
             <div className="flex flex-col gap-[4vh] md:flex-row justify-between">
               <div>
