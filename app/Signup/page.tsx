@@ -40,6 +40,8 @@ const Signup = () => {
         setWarning("User with this Email already exists");
         else if(factor == "username")
         setWarning("Username has already been taken");
+        else
+        setWarning("An error occurred");
       }
     else
     {
