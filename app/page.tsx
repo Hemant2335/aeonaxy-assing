@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center mt-[5vh] h-[70vh]">
+      <div className="flex  flex-col items-center mt-[5vh] h-[70vh]">
         <h1 className="text-[3.7vh] font-medium">
           Please verify your email...
         </h1>
@@ -18,7 +18,7 @@ export default function Home() {
           </div>
           <FaEnvelope className="text-[12vh] text-gray-400 mt-[2vh]" />
         </div>
-        <div className="text-center max-w-[46vw] flex flex-col gap-[3vh] text-gray-600">
+        <div className="text-center md:max-w-[46vw] flex flex-col gap-[3vh] text-gray-600">
           <p>
             Please verify your email address. We&apos;ve sent a confirmation email
             to:

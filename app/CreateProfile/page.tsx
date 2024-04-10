@@ -51,7 +51,7 @@ const CreateProfile = () => {
           </h2>
           <div className="flex flex-col gap-[4vh] mt-[4vh]">
             <h1 className=" font-bold text-[2.7vh]">Add an avatar</h1>
-            <div className=" flex gap-[2vw]">
+            <div className=" md:flex gap-[2vw]">
               {/* Image Box */}
               <div className="h-[22vh] overflow-hidden text-gray-400 border-[0.5vh] flex justify-center items-center rounded-[50%] border-dashed w-[22vh] border-gray-300">
                 {!isuploaded ? (

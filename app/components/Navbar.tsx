@@ -23,12 +23,12 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex items-center gap-3">
-        <div className="w-[10vw] pl-2 py-2 rounded-md pr-[2vw] text-gray-400 bg-gray-100 flex gap-2 items-center">
+        <div className="w-[10vw] pl-2 py-2 rounded-md pr-[2vw] text-gray-400 bg-gray-100 hidden md:flex gap-2 items-center">
           <FaMagnifyingGlass />
           <input type="text" placeholder="Search" className="max-w-[4vw] bg-gray-100  focus:outline-none text-gray-600" width={10} />
         </div>
         <FaBagShopping className="text-gray-400 text-lg"/>
-        <div className="flex cursor-pointer overflow-hidden  text-[3vh] w-[2vw] h-[2vw] font-bold ">
+        <div className="flex cursor-pointer overflow-hidden w-[5vw] h-[5vw]  text-[3vh] md:w-[2vw] md:h-[2vw] font-bold ">
           <Image
             layout="responsive"
             src={require("../assets/banner.jpg")}

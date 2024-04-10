@@ -12,7 +12,7 @@ import {
 const Footer = () => {
   return (
     <div className="px-[5vw]">
-    <div className=" flex justify-between py-[5vh]">
+    <div className=" grid grid-cols-2 gap-5 md:gap-0 md:flex justify-between py-[5vh]">
       <div className=" flex flex-col">
         <div className="flex cursor-pointer text-[3vh]  w-fit h-fit font-bold ">
           <Image
@@ -22,7 +22,7 @@ const Footer = () => {
             alt="logo"
           />
         </div>
-        <p className="max-w-[18vw] text-left text-[2vh] ">
+        <p className="md:max-w-[18vw] text-left text-[2vh] ">
           Dribble is the world&apos;s leading community for creatives to share, grow,
           and get hired
         </p>
@@ -91,21 +91,21 @@ const Footer = () => {
         <li>Themes</li>
       </ul>
     </div>
-    <div className=" border-t-2 flex justify-between  text-gray-700 text-center py-[4vh]">
+    <div className=" border-t-2 md:flex justify-between  text-gray-700 text-center py-[4vh]">
       <p className="text-[1.8vh]">
         © 2023 Dribbble. All rights reserved.
       </p>
-      <p className="text-[1.8vh] flex items-center gap-2">
+      <div className="text-[1.8vh] justify-center flex items-center gap-2">
         <span className="font-bold text-black">20,501,853</span> shots dribbled 
         <div className="flex cursor-pointer text-[3vh]  w-fit h-fit font-bold ">
           <Image
             layout="responsive"
             src={require("../assets/social.png")}
-            className="rounded-xl max-h-[10vh] md:max-h-[3vh]"
+            className="rounded-xl max-h-[3vh] md:max-h-[3vh]"
             alt="logo"
           />
         </div>
-      </p>
+      </div>
     </div>
     </div>
   );
