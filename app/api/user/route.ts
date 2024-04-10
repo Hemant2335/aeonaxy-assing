@@ -39,8 +39,8 @@ export async function POST(req : NextRequest) {
                 bio : body.bio
             }
         });
-        console.log(process.env.NEXT_PUBLIC_JWT_SECRET);
-        const token = jwt.sign({id : user.id} , process.env.NEXT_PUBLIC_JWT_SECRET || "secret");
+        console.log(process.env.JWT_SECRET);
+        const token = jwt.sign({id : user.id} , process.env.JWT_SECRET || "secret");
         return NextResponse.json({sucess : true , token : token});
     } catch (error) {
         console.log(error);

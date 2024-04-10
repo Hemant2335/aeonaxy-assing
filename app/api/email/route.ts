@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
 export async function GET(req: NextRequest) {
   const token = req.nextUrl.searchParams.get('token');
   console.log("I am token" , token);
+  console.log(process.env.JWT_SECRET);
   if (!token) {
     return NextResponse.json({ message: "No Token Provided" });
   }
